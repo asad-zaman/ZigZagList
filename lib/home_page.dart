@@ -38,26 +38,60 @@ class HomePage extends StatelessWidget {
                               : position * (isEven ? -20 : 0))
                       .toDouble();
 
-                  return Transform.translate(
-                    offset: Offset(isEven ? dx : -dx, dy),
-                    child: Align(
-                      alignment:
-                          isEven ? Alignment.centerLeft : Alignment.centerRight,
-                      child: InkWell(
-                        onTap: () {},
-                        child: Column(
+                  return (isEven && position == 2)
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Image.asset(
-                              'assets/images/ic_list_${(index % 8) + 1}.png',
-                              width: 100,
-                              height: 100,
+                            Transform.translate(
+                              offset: Offset(50.0, -dy),
+                              child: InkWell(
+                                onTap: () {},
+                                child: Image.asset(
+                                  'assets/images/ic_list_light.png',
+                                  width: 150,
+                                  height: 150,
+                                ),
+                              ),
                             ),
-                            Text('$index'),
+                            Transform.translate(
+                              offset: Offset(0.0, dy),
+                              child: InkWell(
+                                onTap: () {},
+                                child: Column(
+                                  children: [
+                                    Image.asset(
+                                      'assets/images/ic_list_${(index % 8) + 1}.png',
+                                      width: 100,
+                                      height: 100,
+                                    ),
+                                    Text('$index'),
+                                  ],
+                                ),
+                              ),
+                            )
                           ],
-                        ),
-                      ),
-                    ),
-                  );
+                        )
+                      : Transform.translate(
+                          offset: Offset(isEven ? dx : -dx, dy),
+                          child: Align(
+                            alignment: isEven
+                                ? Alignment.centerLeft
+                                : Alignment.centerRight,
+                            child: InkWell(
+                              onTap: () {},
+                              child: Column(
+                                children: [
+                                  Image.asset(
+                                    'assets/images/ic_list_${(index % 8) + 1}.png',
+                                    width: 100,
+                                    height: 100,
+                                  ),
+                                  Text('$index'),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
                 } else {
                   var isEven = (index / 3).floorToDouble().toInt().isEven;
                   var position = index % 3;
@@ -75,26 +109,93 @@ class HomePage extends StatelessWidget {
                               : position * (isEven ? 10 : 0))
                       .toDouble();
 
-                  return Transform.translate(
-                    offset: Offset(isEven ? dx : -dx, dy),
-                    child: Align(
-                      alignment:
-                          isEven ? Alignment.centerLeft : Alignment.centerRight,
-                      child: InkWell(
-                        onTap: () {},
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/ic_list_${(index % 8) + 1}.png',
-                              width: 100,
-                              height: 100,
+                  return (position == 0)
+                      ? isEven
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Transform.translate(
+                                  offset: Offset(20.0, dy),
+                                  child: InkWell(
+                                    onTap: () {},
+                                    child: Column(
+                                      children: [
+                                        Image.asset(
+                                          'assets/images/ic_list_${(index % 8) + 1}.png',
+                                          width: 100,
+                                          height: 100,
+                                        ),
+                                        Text('$index'),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Transform.translate(
+                                  offset: const Offset(-50.0, 0.0),
+                                  child: InkWell(
+                                    onTap: () {},
+                                    child: Image.asset(
+                                      'assets/images/ic_list_clap.png',
+                                      width: 100,
+                                      height: 100,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            )
+                          : Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Transform.translate(
+                                  offset: const Offset(50.0, 0.0),
+                                  child: InkWell(
+                                    onTap: () {},
+                                    child: Image.asset(
+                                      'assets/images/ic_list_good.png',
+                                      width: 100,
+                                      height: 100,
+                                    ),
+                                  ),
+                                ),
+                                Transform.translate(
+                                  offset: Offset(-20.0, dy),
+                                  child: InkWell(
+                                    onTap: () {},
+                                    child: Column(
+                                      children: [
+                                        Image.asset(
+                                          'assets/images/ic_list_${(index % 8) + 1}.png',
+                                          width: 100,
+                                          height: 100,
+                                        ),
+                                        Text('$index'),
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            )
+                      : Transform.translate(
+                          offset: Offset(isEven ? dx : -dx, dy),
+                          child: Align(
+                            alignment: isEven
+                                ? Alignment.centerLeft
+                                : Alignment.centerRight,
+                            child: InkWell(
+                              onTap: () {},
+                              child: Column(
+                                children: [
+                                  Image.asset(
+                                    'assets/images/ic_list_${(index % 8) + 1}.png',
+                                    width: 100,
+                                    height: 100,
+                                  ),
+                                  Text('$index'),
+                                ],
+                              ),
                             ),
-                            Text('$index'),
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
+                          ),
+                        );
                 }
               },
             ),
